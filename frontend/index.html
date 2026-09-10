@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure human biodata intake form">
+  <title>Fieldnotes | Biodata intake</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Fieldnotes home"><span class="brand-mark">F</span><span>fieldnotes</span></a>
+    <span class="secure-label"><span class="status-dot"></span> private intake</span>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">Human biodata registry <span>01 / 04</span></p>
+      <h1>Make a clear<br><em>first impression.</em></h1>
+      <p class="lede">A quiet place to collect the details that help people be seen, understood, and supported.</p>
+      <div class="intro-rule"></div>
+      <p class="privacy-note"><span class="lock-icon">&#9670;</span> Your details stay within your private registry.</p>
+    </section>
+
+    <section class="form-panel" aria-labelledby="form-title">
+      <div class="panel-heading">
+        <div><p class="eyebrow">New record</p><h2 id="form-title">Personal profile</h2></div>
+        <span class="step-count">01—04</span>
+      </div>
+      <form id="bio-form">
+        <div class="form-grid">
+          <label class="field field-wide">Full name <span>*</span><input name="full_name" required autocomplete="name" placeholder="e.g. Amara Okafor"></label>
+          <label class="field">Date of birth <span>*</span><input name="date_of_birth" required type="date"></label>
+          <label class="field">Sex <span>*</span><select name="sex" required><option value="" disabled selected>Select one</option><option>Female</option><option>Male</option><option>Intersex</option><option>Prefer not to say</option></select></label>
+          <label class="field">Email address <span>*</span><input name="email" required type="email" autocomplete="email" placeholder="you@example.com"></label>
+          <label class="field">Phone number<input name="phone" type="tel" autocomplete="tel" placeholder="+1 555 000 0000"></label>
+          <label class="field field-wide">Street address<input name="address" autocomplete="street-address" placeholder="House number and street"></label>
+          <label class="field">City<input name="city" autocomplete="address-level2" placeholder="Your city"></label>
+          <label class="field">Country<input name="country" autocomplete="country-name" placeholder="Your country"></label>
+          <label class="field">Occupation<input name="occupation" placeholder="What do you do?"></label>
+          <label class="field">Blood type<select name="blood_type"><option value="">Select type</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select></label>
+          <label class="field">Height (cm)<input name="height_cm" type="number" min="30" max="300" placeholder="170"></label>
+          <label class="field">Weight (kg)<input name="weight_kg" type="number" min="2" max="500" step="0.1" placeholder="65"></label>
+          <label class="field field-wide">Emergency contact<input name="emergency_contact" placeholder="Name and phone number"></label>
+          <label class="field field-wide">Additional notes<textarea name="notes" rows="3" placeholder="Anything else worth knowing..."></textarea></label>
+        </div>
+        <div class="form-footer"><p><span>*</span> Required fields</p><button type="submit" class="submit-button">Save profile <span aria-hidden="true">&#8594;</span></button></div>
+        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="recent" aria-labelledby="recent-title"><div class="recent-heading"><div><p class="eyebrow">Registry</p><h2 id="recent-title">Recent profiles</h2></div><button id="refresh-button" class="refresh-button" type="button" title="Refresh profiles" aria-label="Refresh profiles">&#8635;</button></div><div id="recent-list" class="recent-list"><p class="empty-state">Loading the latest entries...</p></div></section>
+  </main>
+  <footer><span>FIELDNOTES / BIODATA</span><span>Built for careful keeping</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
