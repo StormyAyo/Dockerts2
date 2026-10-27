@@ -1,7 +1,7 @@
 import os
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, Request, status  # <--- Added Request here
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -40,3 +40,15 @@ async def create_person(payload: PersonCreate, session: AsyncSession = Depends(g
 async def list_people(session: AsyncSession = Depends(get_session)) -> list[Person]:
     result = await session.execute(select(Person).order_by(Person.created_at.desc()).limit(50))
     return list(result.scalars().all())
+
+
+# --- ADD THE INFORM ROUTE HERE AT THE BOTTOM ---
+@app.post("/inform")
+async def receive_inform(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        data = await request.body()
+    
+    print("Received data from AirControl Agent:", data)
+    return {"status": "success", "message": "Information received"}

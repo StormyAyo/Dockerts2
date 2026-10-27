@@ -27,7 +27,9 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "8080:80"
+      - "3000:80" # changed this from 8000 to 3000
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf    # <--- Added this line here
     depends_on:
       - backend
 

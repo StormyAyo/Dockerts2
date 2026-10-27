@@ -1,4 +1,5 @@
-const API_BASE = window.API_BASE_URL || 'http://localhost:8000';
+const API_BASE = window.API_BASE_URL || '';
+/*const API_BASE = window.API_BASE_URL || 'http://localhost:8000';*/
 const form = document.querySelector('#bio-form');
 const status = document.querySelector('#form-status');
 const recentList = document.querySelector('#recent-list');
